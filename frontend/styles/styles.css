@@ -113,6 +113,46 @@ img {
     margin-right: 5px;
 }
 
+/* Main page */
+
+.main-page-body-wrapper {
+    background-color: #FFF8F0;
+}
+
+.nav-bar-wrapper {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255, 0.7);
+}
+
+.logo-title-wrapper {
+    display: flex;
+    align-items: center;
+    height: 72px;
+}
+
+.logo-title-wrapper > div:last-child {
+    margin: 0px 10px;
+    font-family: 'Passions Conflict', cursive !important;
+}
+
+.nav-btns-wrapper {
+    list-style: none;
+    display: flex;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin: 0px 10px;
+}
+
+.nav-btn span {
+    margin: 0px 5px;
+}
+
 /*** Utilities ***/
 .bold-text {
     font-weight: bold;
@@ -161,7 +201,7 @@ img {
 
 .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 0,
+  'FILL' 1,
   'wght' 400,
   'GRAD' 0,
   'opsz' 48
