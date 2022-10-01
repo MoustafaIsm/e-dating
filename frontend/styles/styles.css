@@ -4,6 +4,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 img {
@@ -18,7 +19,6 @@ img {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    filter: brightness(0.3);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -26,13 +26,37 @@ img {
     align-items: center;
 }
 
+.index-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #FFFFFF;
+}
+
+.index-form-wrapper > * {
+    margin: 10px;
+}
+
+.index-header-wrapper {
+    text-align: center;
+}
+
+.index-login-form {
+    display: flex;
+    flex-direction: column;
+}
 
 
 
 /*** Utilities ***/
+.bold-text {
+    font-weight: bold;
+}
 
-
-
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
 
 
 /*** Media Query ***/
