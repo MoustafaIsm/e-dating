@@ -53,6 +53,20 @@ img {
     width: 80%;
 }
 
+.signup-text {
+    align-self: center;
+}
+
+.signup-text span {
+    text-decoration: underline;
+    color: #9dd9d2;
+}
+
+.signup-text span:hover {
+    cursor: pointer;
+    color: #392F5A;
+}
+
 /*** Utilities ***/
 .bold-text {
     font-weight: bold;
