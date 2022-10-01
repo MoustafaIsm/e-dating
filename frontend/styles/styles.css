@@ -29,8 +29,9 @@ img {
 .index-form-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-color: #FFFFFF;
+    width: 40vw;
+    border-radius: 30px;
 }
 
 .index-form-wrapper > * {
@@ -46,16 +47,56 @@ img {
     flex-direction: column;
 }
 
-
+.index-login-form > * {
+    margin: 10px;
+    align-self: center;
+    width: 80%;
+}
 
 /*** Utilities ***/
 .bold-text {
     font-weight: bold;
 }
 
+.large-text {
+    font-size: 40px;
+}
+
 .input-wrapper {
     display: flex;
     flex-direction: column;
+}
+
+.input-wrapper > input {
+    margin: 5px 0px;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #392F5A;
+    outline: none;
+    border-radius: 15px;
+}
+
+.btn {
+    background-color: #FFFFFF;
+    outline: none;
+    border-radius: 20px;
+    padding: 10px 40px;
+    width: fit-content;
+    font-size: 20px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.outlined-btn {
+    border: 2px solid #F4D06F;
+    color: #392F5A;
+}
+
+.outlined-btn:hover {
+    background-color: #F4D06F;
+    border: 2px solid #392F5A;
 }
 
 
