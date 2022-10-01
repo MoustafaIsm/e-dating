@@ -67,6 +67,52 @@ img {
     color: #392F5A;
 }
 
+/* Signup modal */
+
+.signup-modal {
+    margin: auto;
+    padding-bottom: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.signup-close-modal {
+    align-self: flex-end;
+}
+
+.signup-modal form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group-input-wrapper {
+    display: flex;
+    margin: 10px 0px;
+}
+
+.signup-modal form > button { 
+    align-self: center;
+}
+
+.radio-input-wrapper {
+    width: 50%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.radio-input-wrapper > input {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
 /*** Utilities ***/
 .bold-text {
     font-weight: bold;
@@ -123,6 +169,10 @@ img {
 
 .material-symbols-outlined:hover {
     cursor: pointer;
+}
+
+.hide {
+    display: none;
 }
 
 

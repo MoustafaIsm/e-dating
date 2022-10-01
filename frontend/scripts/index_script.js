@@ -10,10 +10,12 @@ if (typeof signupModal.showModal !== 'function') {
 // Listeners functions
 const openSignupModal = () => {
     signupModal.showModal();
+    signupModal.classList.remove("hide");
 }
 
 const closeSignupModal = () => {
     signupModal.close();
+    signupModal.classList.add("hide");
 }
 
 

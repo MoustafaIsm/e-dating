@@ -27,12 +27,12 @@
                 <!-- Email input -->
                 <div class="input-wrapper">
                     <label for="login-email-input"> Email </label>
-                    <input type="email" placeholder="Email" id="login-email-input">
+                    <input type="email" placeholder="Email" id="login-email-input" required>
                 </div>
                 <!-- Password input -->
                 <div class="input-wrapper">
                     <label for="login-password-input"> Password </label>
-                    <input type="password" placeholder="Password" id="login-password-input">
+                    <input type="password" placeholder="Password" id="login-password-input" required>
                 </div>
                 <p class="login-error"></p>
                 <button class="btn outlined-btn bold-text"> Log in </button>
@@ -44,7 +44,7 @@
         </div>
 
         <!-- Signup popup -->
-        <dialog class="signup-modal" id="signup-modal">
+        <dialog class="signup-modal hide" id="signup-modal">
             <div class="signup-close-modal">
                 <span class="material-symbols-outlined" id="signup-close-modal">
                     close
@@ -58,21 +58,21 @@
                 <!-- Full name -->
                 <div class="input-wrapper">
                     <label for="signup-name-input"> Full name </label>
-                    <input type="text" placeholder="Full name" id="signup-name-input">
+                    <input type="text" placeholder="Full name" id="signup-name-input" required>
                 </div>
                 <!-- Email -->
                 <div class="input-wrapper">
                     <label for="signup-email-input"> Email </label>
-                    <input type="email" placeholder="Email" id="signup-email-input">
+                    <input type="email" placeholder="Email" id="signup-email-input" required>
                 </div>
                 <!-- Age -->
                 <div class="input-wrapper">
                     <label for="signup-age-input"> Age </label>
-                    <input type="number" placeholder="Age" id="signup-age-input">
+                    <input type="number" placeholder="Age" id="signup-age-input" required>
                 </div>
                 <!-- Gender -->
+                <h3>What's your gender ?</h3>
                 <div class="radio-group-input-wrapper">
-                    <h3>What's your gender ?</h3>
                     <div class="radio-input-wrapper">
                         <input type="radio" name="gender" id="male" value="Male">
                         <label for="male"> Male </label>
@@ -83,8 +83,8 @@
                     </div>
                 </div>
                 <!-- Intrested in Gender -->
+                <h3>What gender you intrested in ?</h3>
                 <div class="radio-group-input-wrapper">
-                    <h3>What gender you intrested in ?</h3>
                     <div class="radio-input-wrapper">
                         <input type="radio" name="intrested-gender" id="intrested-male" value="Male">
                         <label for="intrested-male"> Male </label>
