@@ -121,9 +121,13 @@ img {
 
 .nav-bar-wrapper {
     height: 80px;
+    width: 100%;
     display: flex;
     align-items: center;
-    background-color: rgb(255, 255, 255, 0.7);
+    background-color: rgb(255, 255, 255, 1);
+    position: fixed;
+    top: 0;
+    z-index: 10;
 }
 
 .logo-title-wrapper {
@@ -134,7 +138,6 @@ img {
 
 .logo-title-wrapper > div:last-child {
     margin: 0px 10px;
-    font-family: 'Passions Conflict', cursive !important;
 }
 
 .nav-btns-wrapper {
@@ -146,7 +149,20 @@ img {
     display: flex;
     align-items: center;
     font-size: 24px;
-    margin: 0px 10px;
+    margin: 0px 20px;
+    transition-duration: 750ms;
+}
+
+.nav-btn:hover {
+    color: #FF8811;
+    border-bottom: 5px solid #FF8811;
+    cursor: pointer;
+}
+
+.active-nav-btn {
+    color: #FF8811;
+    border-bottom: 5px solid #FF8811;
+    background-color: #FFFFFF;
 }
 
 .nav-btn span {
@@ -183,6 +199,7 @@ img {
     padding: 10px 40px;
     width: fit-content;
     font-size: 20px;
+    transition-duration: 500ms;
 }
 
 .btn:hover {
@@ -192,6 +209,7 @@ img {
 .outlined-btn {
     border: 2px solid #F4D06F;
     color: #392F5A;
+    transition-duration: 500ms;
 }
 
 .outlined-btn:hover {
