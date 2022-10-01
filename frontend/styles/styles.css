@@ -13,7 +13,18 @@ img {
 /*** Sections ***/
 
 /* Index file */
-
+.index-body-wrapper {
+    background-image: url("../assets/images/banner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0.3);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
