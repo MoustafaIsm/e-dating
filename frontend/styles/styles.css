@@ -178,6 +178,14 @@ img {
     font-size: 40px;
 }
 
+.meduim-text {
+    font-size: 30px;
+}
+
+.regular-text {
+    font-size: 20px;
+}
+
 .input-wrapper {
     display: flex;
     flex-direction: column;
