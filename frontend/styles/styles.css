@@ -424,6 +424,24 @@ img {
     align-self: flex-end;
 }
 
+.favorites-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.favorites-wrapper > div {
+    margin: 10px 0px;
+}
+
+.favorites-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 25vw);
+    align-items: center;
+    justify-content: center;
+    gap: 9%;
+}
+
 /*** Utilities ***/
 .bold-text {
     font-weight: bold;
