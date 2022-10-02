@@ -629,6 +629,15 @@ img {
     }
 }
 
+@media screen and (max-width: 1000px) {
+    
+    .msgs-page-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 @media screen and (max-width: 900px) {
     
     .nav-btn > p {
@@ -659,6 +668,14 @@ img {
     .edit-profile-modal {
         width: 80vw;
     }
+
+    .chat-list {
+        width: 70vw;
+    }
+
+    .msgs-wrapper {
+        width: 70vw;
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -674,6 +691,7 @@ img {
     .nav-btn {
         display: none;
     }
+
     .burger-menu {
         display: flex;
         flex-direction: column;
@@ -693,6 +711,19 @@ img {
     .edit-profile-modal {
         width: 100vw;
     }
+
+    .chat-list {
+        width: 90vw;
+    }
+
+    .msgs-wrapper {
+        width: 90vw;
+    }
+
+    .btn {
+        padding: 10px 10px;
+    }
+
 }
 
 @media screen and (max-width: 550px) {
