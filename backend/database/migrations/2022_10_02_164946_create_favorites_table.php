@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blocks', function (Blueprint $table) {
-            $table->integer('blocking_id')->references('id')->on('users');
-            $table->integer('blocked_id')->references('id')->on('users');
+        Schema::create('favorites', function (Blueprint $table) {
+            $table->integer('user_id')->references('id')->on('users');
+            $table->integer('favorited_id')->references('id')->on('users');
             $table->timestamps();
 
-            $table->primary(['blocking_id', 'blocked_id']);
+            $table->primary(['user_id', 'favorited_id']);
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blocks');
+        Schema::dropIfExists('favorites');
     }
 };
