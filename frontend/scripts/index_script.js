@@ -28,4 +28,10 @@ signupCloseModal.addEventListener("click", closeSignupModal);
 // Helper functions
 
 
+const validateEmail = (email) => {
+    return email.match(/(.+)@(.+){2,}\.(.+){2,}/);
+}
 
+const validatePassword = (password) => {
+    return password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/);
+}
