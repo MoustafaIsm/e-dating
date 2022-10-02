@@ -181,6 +181,34 @@ img {
     display: flex;
 }
 
+.burger-menu {
+    display: none;
+    flex-grow: 1;
+    position: relative;
+}
+
+.burger-nav-btns {
+    position: absolute;
+    top: 80px;
+    display: none;
+    list-style: none;
+    background-color: #9dd9d2;
+}
+
+.burger-nav-btn {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin: 0px 20px;
+    transition-duration: 750ms;
+}
+
+.nav-btn:hover {
+    color: #FF8811;
+    border-bottom: 5px solid #FF8811;
+    cursor: pointer;
+}
+
 /* Home page */
 
 .home-page-wrapper {
@@ -583,3 +611,35 @@ img {
 
 /*** Media Query ***/
 
+@media screen and (max-width: 900px) {
+    
+    .nav-btn > p {
+        display: none;
+    }
+
+    .logout-btn p {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .nav-btn {
+        display: none;
+    }
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition-duration: 500ms;
+    }
+
+    .burger-menu:hover {
+        transform: scale(1.3);
+    }
+
+    .burger-menu > span {
+        height: fit-content;
+    }
+}
