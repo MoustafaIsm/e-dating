@@ -189,8 +189,9 @@ img {
 
 .burger-nav-btns {
     position: absolute;
-    top: 80px;
-    display: none;
+    padding: 20px;
+    top: 60px;
+    right: 5px;
     list-style: none;
     background-color: #9dd9d2;
 }
@@ -199,14 +200,20 @@ img {
     display: flex;
     align-items: center;
     font-size: 24px;
-    margin: 0px 20px;
+    margin: 20px 20px;
+    padding: 5px;
     transition-duration: 750ms;
 }
 
-.nav-btn:hover {
+.burger-nav-btn:hover {
     color: #FF8811;
     border-bottom: 5px solid #FF8811;
     cursor: pointer;
+}
+
+.active-burger-nav-btn {
+    color: #FF8811;
+    border-bottom: 5px solid #FF8811;
 }
 
 /* Home page */
@@ -635,7 +642,7 @@ img {
         transition-duration: 500ms;
     }
 
-    .burger-menu:hover {
+    .burger-menu > span:hover {
         transform: scale(1.3);
     }
 

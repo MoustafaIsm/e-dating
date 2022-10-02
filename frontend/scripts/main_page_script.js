@@ -6,6 +6,9 @@ const homePage = document.getElementById("home-page");
 const msgsPage = document.getElementById("msgs-page");
 const profilePage = document.getElementById("profile-page");
 
+const burgerMenu = document.getElementById("burger-menu");
+const burgerMenuBtns = document.getElementById("burger-menu-btns");
+
 const editProfilemodal = document.getElementById("edit-profile-modal");
 const editProfileBtn = document.getElementById("edit-profile-btn");
 const closeEditProfileBtn = document.getElementById("close-edit-profile-btn");
@@ -30,6 +33,10 @@ const openProfilePage = () => {
     openPage("profile");
 }
 
+const openMenu = () => {
+    burgerMenuBtns.classList.toggle("hide");
+}
+
 const openEditProfile = () => {
     editProfilemodal.classList.remove("hide");
     editProfilemodal.showModal();
@@ -46,6 +53,8 @@ const closeEditProfile = () => {
 homeNavBtn.addEventListener("click", openHomePage);
 msgsNavBtn.addEventListener("click", openMsgsPage);
 profileNavBtn.addEventListener("click", openProfilePage);
+
+burgerMenu.addEventListener("click", openMenu);
 
 editProfileBtn.addEventListener("click", openEditProfile);
 closeEditProfileBtn.addEventListener("click", closeEditProfile);
