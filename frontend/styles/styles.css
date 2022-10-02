@@ -243,7 +243,7 @@ img {
 
 .chat-list {
     width: 50vw;
-    height: 80vh;
+    height: 75vh;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -282,12 +282,74 @@ img {
 
 .msgs-wrapper {
     width: 50vw;
-    height: 80vh;
+    height: 75vh;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     background-color: #FFFFFF;
     margin: 20px 20px 20px 0px;
+    position: relative;
+}
+
+.chat-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #FF8811;
+    display: flex;
+    align-items: center;
+}
+
+.chat-header-img {
+    width: 64px;
+    height: 64px;
+    background-color: grey;
+    border-radius: 100%;
+}
+
+.chat-header > p {
+    margin-left: 10px;
+}
+
+.block-btn-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: end;
+}
+
+.block-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.msg-input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.new-msg-form {
+    width: 100%;
+    display: flex;
+}
+
+.new-msg-form > input {
+    flex-grow: 1;
+    margin: 5px 10px;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #392F5A;
+    outline: none;
+    border-radius: 15px;
+}
+
+.send-btn {
+    margin: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*** Utilities ***/
