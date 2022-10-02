@@ -143,6 +143,7 @@ img {
 .nav-btns-wrapper {
     list-style: none;
     display: flex;
+    flex-grow: 1;
 }
 
 .nav-btn {
@@ -167,6 +168,17 @@ img {
 
 .nav-btn span {
     margin: 0px 5px;
+}
+
+.logout-btn {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 20px;
+}
+
+.logout-btn > button {
+    display: flex;
 }
 
 /* Home page */
