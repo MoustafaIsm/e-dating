@@ -29,28 +29,36 @@
             </div>
             <!-- Navigation buttons -->
             <ul class="nav-btns-wrapper">
-                <li class="nav-btn active-nav-btn">
+                <li class="nav-btn active-nav-btn" id="home-nav-btn">
                     <span class="material-symbols-outlined">
                         home
                     </span>
                     <p> Home </p>
                 </li>
-                <li class="nav-btn">
+                <li class="nav-btn" id="msgs-nav-btn">
                     <span class="material-symbols-outlined">
                         chat
                     </span>
                     <p> Messages </p>
                 </li>
-                <li class="nav-btn">
+                <li class="nav-btn" id="profile-nav-btn">
                     <span class="material-symbols-outlined">
                         person
                     </span>
                     <p> Profile </p>
                 </li>
+                <li class="logout-btn" id="logout-btn">
+                    <button class="btn outlined-btn">
+                        <span class="material-symbols-outlined">
+                            logout
+                        </span>
+                        <p> Logout </p>
+                    </button>
+                </li>
             </ul>
         </nav>
         <!-- Home page -->
-        <section class="home-page-wrapper hide">
+        <section class="home-page-wrapper " id="home-page">
             <!-- Page title -->
             <div class="page-title">
                 <h1> Discover </h1>
@@ -91,7 +99,7 @@
             </div>
         </section>
         <!-- Messages page -->
-        <section class="msgs-page-warapper hide">
+        <section class="msgs-page-warapper hide" id="msgs-page">
             <!-- Page title -->
             <div class="page-title">
                 <h1> Messages </h1>
@@ -158,7 +166,7 @@
             </div>
         </section>
         <!-- Profile page -->
-        <section class="profile-page-wrapper">
+        <section class="profile-page-wrapper hide" id="profile-page">
             <!-- Page title -->
             <div class="page-title">
                 <h1> Profile </h1>
