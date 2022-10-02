@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datify / Sign up</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./assets/fonts/Roboto/Roboto-Regular.ttf">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    <div class="index-body-wrapper">
+
+        <!-- Login form -->
+        <div class="index-form-wrapper">
+            <!-- Header -->
+            <div class="index-header-wrapper">
+                <h1 class="large-text"> Datify </h1>
+                <h3> Your interests are your Spotlight </h3>
+            </div>
+            <!-- Form -->
+            <form class="index-login-form">
+                <!-- Email input -->
+                <div class="input-wrapper">
+                    <label for="login-email-input"> Email </label>
+                    <input type="email" placeholder="Email" id="login-email-input" required>
+                </div>
+                <!-- Password input -->
+                <div class="input-wrapper">
+                    <label for="login-password-input"> Password </label>
+                    <input type="password" placeholder="Password" id="login-password-input" required>
+                </div>
+                <p class="login-error"></p>
+                <button class="btn outlined-btn bold-text"> Log in </button>
+            </form>
+            <!-- Signup -->
+            <div class="signup-text">
+                <p> Don't have and account ? <span id="signup-text"> Sign up </span></p>
+            </div>
+        </div>
+
+        <!-- Signup popup -->
+        <dialog class="signup-modal hide" id="signup-modal">
+            <div class="signup-close-modal">
+                <span class="material-symbols-outlined" id="signup-close-modal">
+                    close
+                </span>
+            </div>
+            <div class="index-header-wrapper">
+                <h1 class="large-text"> Create an account </h1>
+            </div>
+            <!-- Signup form -->
+            <form class="signup-form">
+                <!-- Full name -->
+                <div class="input-wrapper">
+                    <label for="signup-name-input"> Full name </label>
+                    <input type="text" placeholder="Full name" id="signup-name-input" required>
+                </div>
+                <!-- Email -->
+                <div class="input-wrapper">
+                    <label for="signup-email-input"> Email </label>
+                    <input type="email" placeholder="Email" id="signup-email-input" required>
+                </div>
+                <!-- Age -->
+                <div class="input-wrapper">
+                    <label for="signup-age-input"> Age </label>
+                    <input type="number" placeholder="Age" id="signup-age-input" required>
+                </div>
+                <!-- Gender -->
+                <h3>What's your gender ?</h3>
+                <div class="radio-group-input-wrapper">
+                    <div class="radio-input-wrapper">
+                        <input type="radio" name="gender" id="male" value="Male">
+                        <label for="male"> Male </label>
+                    </div>
+                    <div class="radio-input-wrapper">
+                        <input type="radio" name="gender" id="female" value="Female">
+                        <label for="female"> Female </label>
+                    </div>
+                </div>
+                <!-- Intrested in Gender -->
+                <h3>What gender you intrested in ?</h3>
+                <div class="radio-group-input-wrapper">
+                    <div class="radio-input-wrapper">
+                        <input type="checkbox" name="intrested-gender" id="intrested-male" value="Male">
+                        <label for="intrested-male"> Male </label>
+                    </div>
+                    <div class="radio-input-wrapper">
+                        <input type="checkbox" name="intrested-gender" id="intrested-female" value="Female">
+                        <label for="intrested-female"> Female </label>
+                    </div>
+                </div>
+                <p class="signup-error"></p>
+                <button class="btn outlined-btn bold-text"> Create account </button>
+            </form>
+        </dialog>
+
+    </div>
+
+    <script src="./scripts/axios/node_modules/axios/dist/axios.min.js"></script>
+    <script src="./scripts/index_script.js"></script>
+</body>
+
+</html>
