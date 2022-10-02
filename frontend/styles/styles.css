@@ -615,6 +615,16 @@ img {
     width: 100%;
 }
 
+.location-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.location-wrapper > * {
+    margin: 10px 0px;
+}
+
 
 /*** Media Query ***/
 
