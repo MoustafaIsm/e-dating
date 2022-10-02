@@ -12,10 +12,12 @@ if (typeof editProfilemodal.showModal !== 'function') {
 
 // Listeners functions
 const openEditProfile = () => {
+    editProfilemodal.classList.remove("hide");
     editProfilemodal.showModal();
 }
 
 const closeEditProfile = () => {
+    editProfilemodal.classList.add("hide");
     editProfilemodal.close();
 }
 
