@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->string('message');
+            $table->integer('sent_by_id')->references('id')->on('users');
+            $table->integer('recieved_by_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
