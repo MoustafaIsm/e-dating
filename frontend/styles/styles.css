@@ -638,6 +638,10 @@ img {
     .logout-btn p {
         display: none;
     }
+
+    .edit-profile-modal {
+        width: 65vw;
+    }
 }
 
 @media screen and (max-width: 850px) {
@@ -650,6 +654,10 @@ img {
     .favorites-cards-wrapper {
         grid-template-columns: repeat(1, 60vw);
         row-gap: 5%;
+    }
+
+    .edit-profile-modal {
+        width: 80vw;
     }
 }
 
@@ -680,6 +688,10 @@ img {
 
     .burger-menu > span {
         height: fit-content;
+    }
+
+    .edit-profile-modal {
+        width: 100vw;
     }
 }
 
