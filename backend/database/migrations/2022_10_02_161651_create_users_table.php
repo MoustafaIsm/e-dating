@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string("full_name");
             $table->string("email");
             $table->string("password");
-            $table->string("bio");
+            $table->string("bio")->default('NA');
             $table->string("location");
             $table->integer("age");
             $table->string("gender");
             $table->string("intrested_in");
-            $table->string("profile_picture_url");
+            $table->string("profile_picture_url")->default('NA');
             $table->timestamps();
         });
     }
