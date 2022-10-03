@@ -9,6 +9,14 @@ class User extends Model {
 
     use HasFactory;
 
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims() {
+        return [];
+    }
+
     public function Profile() {
         return $this->hasOne(User::class, 'id');
     }
