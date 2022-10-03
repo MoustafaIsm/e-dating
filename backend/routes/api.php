@@ -18,6 +18,11 @@ Route::prefix('user')->group(function () {
     Route::prefix('blocks')->group(function () {
         Route::get('/add_block/{id}/{blocked_id}', [UserController::class, 'addBlock']);
     });
+
+    Route::prefix('messages')->group(function () {
+        Route::get('/get_messages/{id}', [UserController::class, 'getMessages']);
+        Route::post('/add_message', [UserController::class, 'addMessage']);
+    });
     
 });
 
