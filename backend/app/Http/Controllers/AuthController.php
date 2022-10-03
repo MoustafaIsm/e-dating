@@ -35,27 +35,30 @@ class AuthController extends Controller {
 
     public function register(Request $request) {
         
-        // Add user to the database
-        $user = User::create([
-            'full_name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'location' => $request->location,
-            'age' => $request->age,
-            'gender' => $request->gender,
-            'intrested_in' => $request->intrested_in,
-        ]);
-       
-        // Login user
-        $token = Auth::login($user);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'User created successfully',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ]
-        ]);
+        try {
+            // Add user to the database
+            $user = User::create([
+                'full_name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'location' => $request->location,
+                'age' => $request->age,
+                'gender' => $request->gender,
+                'intrested_in' => $request->intrested_in,
+            ]);
+            // Login user
+            $token = Auth::login($user);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'User created successfully',
+                'user' => $user,
+                'authorisation' => ['token' => $token]
+            ]);
+        } catch (\Illuminate\Database\QueryException $exception) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $exception->errorInfo[2],
+            ], 401);
+        }
     }
 }
