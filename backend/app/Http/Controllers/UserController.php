@@ -99,4 +99,20 @@ class UserController extends Controller {
         ]);
     }
 
+    function addMessage (Request $request) {
+        $message = new Message;
+        $message->message = $request->message;
+        $message->sent_by_id = $request->sent_by_id;
+        $message->recieved_by_id = $request->recieved_by_id;
+
+        if ($message->save()) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+        return response()->json([
+            'status' => 'failed'
+        ], 401);
+    }
+
 } 
