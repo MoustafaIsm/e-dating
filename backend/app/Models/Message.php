@@ -9,11 +9,11 @@ class Message extends Model {
 
     use HasFactory;
 
-    public function senderInfo() {
+    public function SenderInfo() {
         return $this->hasOne(User::class, 'id', 'sent_by_id');
     }
 
-    public function recieverInfo() {
+    public function RecieverInfo() {
         return $this->hasOne(User::class, 'id', 'recieved_by_id');
     }
 

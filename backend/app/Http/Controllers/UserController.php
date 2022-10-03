@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Favorite;
 use App\Models\Block;
@@ -79,6 +80,23 @@ class UserController extends Controller {
         return response()->json([
             'status' => 'failed'
         ], 401);
+    }
+
+    function getMessages ($id) {
+        $messagesSentByTheUser = Message::where('sent_by_id', $id)
+                                    ->with('RecieverInfo')
+                                    ->get();
+        $messagesSentToTheUser = Message::where('recieved_by_id', $id)
+                                    ->with('SenderInfo')
+                                    ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'results' => [
+                'messagesSentByUser' => $messagesSentByTheUser,
+                'messagesSentToUser' => $messagesSentToTheUser
+            ]
+        ]);
     }
 
 } 
