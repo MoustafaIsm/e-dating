@@ -10,11 +10,17 @@ use App\Models\Block;
 class UserController extends Controller {
     
     function getAllUsers () {
-        return $users = User::select('id')->where('id', 1)->with('Profile')->with('BlockedUsers')->get();
+        return $users = User::select('id')
+                            ->where('id', 1)
+                            ->with('Profile')
+                            ->with('BlockedUsers')
+                            ->get();
     }
 
     function getIntrestedIn($id, $intrestedIn) {
-        $usersToDsiplay = User::where('gender', 'like', '%' . $intrestedIn . '%')->where('id', '!=', $id)->get();
+        $usersToDsiplay = User::where('gender', 'like', '%' . $intrestedIn . '%')
+                                ->where('id', '!=', $id)
+                                ->get();
         return response()->json([
             'status' => 'success',
             'result' => $usersToDsiplay
@@ -22,7 +28,9 @@ class UserController extends Controller {
     }
 
     function getFavorites($id) {
-        $favorites = Favorite::where('user_id', $id)->with('FavoritedInfo')->get();
+        $favorites = Favorite::where('user_id', $id)
+                            ->with('FavoritedInfo')
+                            ->get();
         return response()->json([
             'status' => 'success',
             'result' => $favorites
@@ -35,6 +43,20 @@ class UserController extends Controller {
         $favorite->favorited_id = $favoritedId;
         
         if ($favorite->save()) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+        return response()->json([
+            'status' => 'failed'
+        ], 401);
+    }
+
+    function removeFavorite($id, $favoritedId) {
+        $delete = Favorite::where('user_id', $id)
+                            ->where('favorited_id', $favoritedId)
+                            ->delete();
+        if ($delete) {
             return response()->json([
                 'status' => 'success'
             ]);

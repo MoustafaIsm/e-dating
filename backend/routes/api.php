@@ -12,6 +12,8 @@ Route::prefix('user')->group(function () {
     Route::get('/favorites/{id}', [UserController::class, 'getFavorites']);
 
     Route::get('/add_favorites/{id}/{favoritedId}', [UserController::class, 'addFavorite']);
+
+    Route::get('/remove_favorites/{id}/{favoritedId}', [UserController::class, 'removeFavorite']);
     
 });
 
