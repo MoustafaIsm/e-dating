@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Favorite;
 use App\Models\Block;
 
 class UserController extends Controller {
@@ -11,4 +12,13 @@ class UserController extends Controller {
     function getAllUsers () {
         return $users = User::select('id')->where('id', 1)->with('Profile')->with('BlockedUsers')->get();
     }
-}
+
+    function getIntrestedIn($id, $intrestedIn) {
+        $usersToDsiplay = User::where('gender', 'like', '%' . $intrestedIn . '%')->where('id', '!=', $id)->get();
+        return response()->json([
+            'status' => 'success',
+            'result' => $usersToDsiplay
+        ]);
+    }
+
+} 
