@@ -9,17 +9,8 @@ use App\Models\User;
 
 class AuthController extends Controller {
 
-    public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login','register']]);
-    }
-
     public function login(Request $request) {
 
-        // Validates the data sent to the api
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
         $credentials = $request->only('email', 'password');
 
         // Check if user in database
@@ -40,6 +31,31 @@ class AuthController extends Controller {
                     'type' => 'bearer',
                 ]
             ]);
+    }
 
+    public function register(Request $request) {
+        
+        // Add user to the database
+        $user = User::create([
+            'full_name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'location' => $request->location,
+            'age' => $request->age,
+            'gender' => $request->gender,
+            'intrested_in' => $request->intrested_in,
+        ]);
+       
+        // Login user
+        $token = Auth::login($user);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User created successfully',
+            'user' => $user,
+            'authorisation' => [
+                'token' => $token,
+                'type' => 'bearer',
+            ]
+        ]);
     }
 }
