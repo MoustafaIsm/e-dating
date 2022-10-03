@@ -21,4 +21,12 @@ class UserController extends Controller {
         ]);
     }
 
+    function getFavorites($id) {
+        $favorites = Favorite::where('user_id', $id)->with('FavoritedInfo')->get();
+        return response()->json([
+            'status' => 'success',
+            'result' => $favorites
+        ]);
+    }
+
 } 

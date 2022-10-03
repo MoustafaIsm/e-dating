@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 Route::prefix('user')->group(function () {
 
     Route::get('/intrested/{id}/{intrestedIn}', [UserController::class, 'getIntrestedIn']);
+
+    Route::get('/favorites/{id}', [UserController::class, 'getFavorites']);
     
 });
 
