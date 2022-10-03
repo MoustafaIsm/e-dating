@@ -29,4 +29,19 @@ class UserController extends Controller {
         ]);
     }
 
+    function addFavorite($id, $favoritedId) {
+        $favorite = new Favorite;
+        $favorite->user_id = $id;
+        $favorite->favorited_id = $favoritedId;
+        
+        if ($favorite->save()) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+        return response()->json([
+            'status' => 'failed'
+        ], 401);
+    }
+
 } 

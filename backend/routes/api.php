@@ -10,6 +10,8 @@ Route::prefix('user')->group(function () {
     Route::get('/intrested/{id}/{intrestedIn}', [UserController::class, 'getIntrestedIn']);
 
     Route::get('/favorites/{id}', [UserController::class, 'getFavorites']);
+
+    Route::get('/add_favorites/{id}/{favoritedId}', [UserController::class, 'addFavorite']);
     
 });
 
