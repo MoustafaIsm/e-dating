@@ -7,20 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Favorite;
 use App\Models\Block;
+use App\Models\Message;
 
 class UserController extends Controller {
-    
-    function getAllUsers () {
-        return $users = User::select('id')
-                            ->where('id', 1)
-                            ->with('Profile')
-                            ->with('BlockedUsers')
-                            ->get();
-    }
 
-    function getIntrestedIn($id, $intrestedIn) {
-        $usersToDsiplay = User::where('gender', 'like', '%' . $intrestedIn . '%')
-                                ->where('id', '!=', $id)
+    function getIntrestedIn() {
+        $user = Auth::user();
+        $usersToDsiplay = User::where('gender', 'like', '%' . $user->intrested_in . '%')
+                                ->where('id', '!=', $user->id)
                                 ->get();
         return response()->json([
             'status' => 'success',
@@ -28,8 +22,9 @@ class UserController extends Controller {
         ]);
     }
 
-    function getFavorites($id) {
-        $favorites = Favorite::where('user_id', $id)
+    function getFavorites() {
+        $user = Auth::user();
+        $favorites = Favorite::where('user_id', $user->id)
                             ->with('FavoritedInfo')
                             ->get();
         return response()->json([
@@ -38,9 +33,10 @@ class UserController extends Controller {
         ]);
     }
 
-    function addFavorite($id, $favoritedId) {
+    function addFavorite($favoritedId) {
+        $user = Auth::user();
         $favorite = new Favorite;
-        $favorite->user_id = $id;
+        $favorite->user_id = $user->id;
         $favorite->favorited_id = $favoritedId;
         
         if ($favorite->save()) {
@@ -53,8 +49,9 @@ class UserController extends Controller {
         ], 401);
     }
 
-    function removeFavorite($id, $favoritedId) {
-        $delete = Favorite::where('user_id', $id)
+    function removeFavorite($favoritedId) {
+        $user = Auth::user();
+        $delete = Favorite::where('user_id', $user->id)
                             ->where('favorited_id', $favoritedId)
                             ->delete();
         if ($delete) {
@@ -67,9 +64,10 @@ class UserController extends Controller {
         ], 401);
     }
 
-    function addBlock ($id, $blockedId) {
+    function addBlock ($blockedId) {
+        $user = Auth::user();
         $block= new Block;
-        $block->blocking_id = $id;
+        $block->blocking_id = $user->id;
         $block->blocked_id = $blockedId;
 
         if ($block->save()) {
@@ -82,11 +80,12 @@ class UserController extends Controller {
         ], 401);
     }
 
-    function getMessages ($id) {
-        $messagesSentByTheUser = Message::where('sent_by_id', $id)
+    function getMessages () {
+        $user = Auth::user();
+        $messagesSentByTheUser = Message::where('sent_by_id', $user->id)
                                     ->with('RecieverInfo')
                                     ->get();
-        $messagesSentToTheUser = Message::where('recieved_by_id', $id)
+        $messagesSentToTheUser = Message::where('recieved_by_id', $user->id)
                                     ->with('SenderInfo')
                                     ->get();
 
@@ -100,9 +99,10 @@ class UserController extends Controller {
     }
 
     function addMessage (Request $request) {
+        $user = Auth::user();
         $message = new Message;
         $message->message = $request->message;
-        $message->sent_by_id = $request->sent_by_id;
+        $message->sent_by_id = $user->id;
         $message->recieved_by_id = $request->recieved_by_id;
 
         if ($message->save()) {

@@ -62,7 +62,7 @@ class AuthController extends Controller {
         }
     }
 
-    public function notFound() {
+    public function notAuth() {
         return "You are unauthorized.";
     }
 }
