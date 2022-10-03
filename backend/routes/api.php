@@ -9,11 +9,15 @@ Route::prefix('user')->group(function () {
 
     Route::get('/intrested/{id}/{intrestedIn}', [UserController::class, 'getIntrestedIn']);
 
-    Route::get('/favorites/{id}', [UserController::class, 'getFavorites']);
+    Route::prefix('favorites')->group(function () {
+        Route::get('/get_favorites/{id}', [UserController::class, 'getFavorites']);
+        Route::get('/add_favorites/{id}/{favoritedId}', [UserController::class, 'addFavorite']);
+        Route::get('/remove_favorites/{id}/{favoritedId}', [UserController::class, 'removeFavorite']);
+    });
 
-    Route::get('/add_favorites/{id}/{favoritedId}', [UserController::class, 'addFavorite']);
-
-    Route::get('/remove_favorites/{id}/{favoritedId}', [UserController::class, 'removeFavorite']);
+    Route::prefix('blocks')->group(function () {
+        Route::get('/add_block/{id}/{blocked_id}', [UserController::class, 'addBlock']);
+    });
     
 });
 

@@ -66,4 +66,19 @@ class UserController extends Controller {
         ], 401);
     }
 
+    function addBlock ($id, $blockedId) {
+        $block= new Block;
+        $block->blocking_id = $id;
+        $block->blocked_id = $blockedId;
+
+        if ($block->save()) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+        return response()->json([
+            'status' => 'failed'
+        ], 401);
+    }
+
 } 
