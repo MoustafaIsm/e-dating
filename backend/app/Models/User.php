@@ -2,43 +2,44 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
-{
-    use HasApiTokens, HasFactory, Notifiable;
+class User extends Authenticatable implements JWTSubject {
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    use HasFactory, Notifiable;
+
     protected $fillable = [
-        'name',
+        'full_name',
         'email',
         'password',
+        'location',
+        'age',
+        'gender',
+        'intrested_in'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getJWTCustomClaims() {
+        return [];
+    }
+
+    public function Profile() {
+        return $this->hasOne(User::class, 'id');
+    }
+
+    public function BlockedUsers() {
+        return $this->hasMany(Block::class, 'blocking_id');
+    }
+
+    public function FavoritedUsers() {
+        return $this->hasMany(Favorite::class, 'user_id');
+    }
+
 }
