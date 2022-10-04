@@ -57,7 +57,9 @@ const signupUser = () => {
         const email = signupEmail.value;
         const password = signupPassword.value;
         const age = signupAge.value;
-        // const gender = getGender();
+        const gender = getGender();
+        const intrested = getIntrested();
+        const location = getLocation();
     }
 }
 
@@ -80,7 +82,20 @@ const checkeSelected = (array) => {
 }
 
 const getGender = () => {
+    for (const item of signupGender) {
+        if (item.checked)
+            return item.value;
+    }
+    return "NA";
+}
 
+const getIntrested = () => {
+    let selected = "";
+    for (const item of signupIntrested) {
+        if (item.checked)
+            selected += item.value + ",";
+    }
+    return selected;
 }
 
 const validateEmail = (email) => {
