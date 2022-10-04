@@ -30,13 +30,15 @@ const loginUser = () => {
 
         const formData = new FormData();
         formData.append("email", loginEmail.value);
-        formData.append("password", loginPassword);
+        formData.append("password", loginPassword.value);
 
         axios.post(`${url}/auth/login`, formData)
             .then((response) => {
                 login(response.data);
             })
-            .catch((error) => loginError.textContent = "Invalid email or password.");
+            .catch((error) => {
+                loginError.textContent = "Invalid email or password.";
+            });
     } else {
         loginError.textContent = "Error";
     }
@@ -134,4 +136,19 @@ const validateEmail = (email) => {
 const validatePassword = (password) => {
     const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
     return password.match(pattern);
+}
+
+const login = (data) => {
+    saveDataTolocalStorage(data);
+    window.location.href = "../main.html";
+}
+
+const saveDataTolocalStorage = (data) => {
+    localStorage.setItem("token", data.authorisation.token);
+    localStorage.setItem("id", data.user.id);
+    localStorage.setItem("Name", data.user.full_name);
+    localStorage.setItem("age", data.user.age);
+    localStorage.setItem("location", data.user.location);
+    localStorage.setItem("gender", data.user.gender);
+    localStorage.setItem("intrestedIn", data.user.intrested_in);
 }
