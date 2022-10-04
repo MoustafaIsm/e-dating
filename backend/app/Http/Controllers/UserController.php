@@ -15,7 +15,14 @@ class UserController extends Controller {
         $user = Auth::user();
         $usersToDsiplay = User::where('gender', 'like', '%' . $user->intrested_in . '%')
                                 ->where('id', '!=', $user->id)
-                                ->get();
+                                ->whereNotExists(function ($query) use ($user) {
+                                    $query->select('blocked_id')
+                                          ->from('blocks')
+                                          ->where('blocked_id', 'users.id')
+                                          ->where('blocking_id', $user->id)
+                                          ->get();
+                                })
+                                ->toSql();
         return response()->json([
             'status' => 'success',
             'result' => $usersToDsiplay
