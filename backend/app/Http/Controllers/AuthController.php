@@ -63,6 +63,9 @@ class AuthController extends Controller {
     }
 
     public function notAuth() {
-        return "You are unauthorized.";
+        return response() -> json([
+            'status' => 'error',
+            'message' => 'You are unauthorized.'
+        ], 401);
     }
 }
