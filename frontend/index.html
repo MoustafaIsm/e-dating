@@ -23,19 +23,19 @@
                 <h3> Your interests are your Spotlight </h3>
             </div>
             <!-- Form -->
-            <form class="index-login-form">
+            <form class="index-login-form" id="login-form">
                 <!-- Email input -->
                 <div class="input-wrapper">
                     <label for="login-email-input"> Email </label>
-                    <input type="email" placeholder="Email" id="login-email-input" required>
+                    <input type="email" placeholder="Email" id="login-email-input">
                 </div>
                 <!-- Password input -->
                 <div class="input-wrapper">
                     <label for="login-password-input"> Password </label>
-                    <input type="password" placeholder="Password" id="login-password-input" required>
+                    <input type="password" placeholder="Password" id="login-password-input">
                 </div>
-                <p class="login-error"></p>
-                <button class="btn outlined-btn bold-text"> Log in </button>
+                <p class="login-error" id="login-error"></p>
+                <button class="btn outlined-btn bold-text" id="login-btn" type="button"> Log in </button>
             </form>
             <!-- Signup -->
             <div class="signup-text">
@@ -65,6 +65,11 @@
                     <label for="signup-email-input"> Email </label>
                     <input type="email" placeholder="Email" id="signup-email-input" required>
                 </div>
+                <!-- Password -->
+                <div class="input-wrapper">
+                    <label for="signup-password-input"> Password </label>
+                    <input type="password" placeholder="Password" id="signup-password-input" required>
+                </div>
                 <!-- Age -->
                 <div class="input-wrapper">
                     <label for="signup-age-input"> Age </label>
@@ -74,11 +79,11 @@
                 <h3>What's your gender ?</h3>
                 <div class="radio-group-input-wrapper">
                     <div class="radio-input-wrapper">
-                        <input type="radio" name="gender" id="male" value="Male">
+                        <input type="radio" name="gender" id="male" value="Male" required>
                         <label for="male"> Male </label>
                     </div>
                     <div class="radio-input-wrapper">
-                        <input type="radio" name="gender" id="female" value="Female">
+                        <input type="radio" name="gender" id="female" value="Female" required>
                         <label for="female"> Female </label>
                     </div>
                 </div>
@@ -94,12 +99,8 @@
                         <label for="intrested-female"> Female </label>
                     </div>
                 </div>
-                <div class="location-wrapper">
-                    <p class="regular-text bold-text"> Your location </p>
-                    <button class="btn outlined-btn"> Get My location </button>
-                </div>
-                <p class="signup-error"></p>
-                <button class="btn outlined-btn bold-text"> Create account </button>
+                <p class="signup-error" id="signup-error"></p>
+                <button class="btn outlined-btn bold-text" type="button" id="signup-btn"> Create account </button>
             </form>
         </dialog>
 

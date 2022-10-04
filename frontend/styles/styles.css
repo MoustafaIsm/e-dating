@@ -53,6 +53,10 @@ img {
     width: 80%;
 }
 
+.login-error {
+    color: red;
+}
+
 .signup-text {
     align-self: center;
 }

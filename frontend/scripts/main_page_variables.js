@@ -16,6 +16,10 @@ const editProfilemodal = document.getElementById("edit-profile-modal");
 const editProfileBtn = document.getElementById("edit-profile-btn");
 const closeEditProfileBtn = document.getElementById("close-edit-profile-btn");
 
+// Profile
+const userProfilePicture = document.getElementById("user-profile-picture");
+const userInfo = document.getElementById("user-info");
+
 
 // Modal related stuff
 if (typeof editProfilemodal.showModal !== 'function') {
