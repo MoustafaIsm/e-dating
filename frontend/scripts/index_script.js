@@ -140,7 +140,7 @@ const validatePassword = (password) => {
 
 const login = (data) => {
     saveDataTolocalStorage(data);
-    window.location.href = "../main.html";
+    window.location.href = "../frontend/main.html";
 }
 
 const saveDataTolocalStorage = (data) => {
