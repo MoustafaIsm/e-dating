@@ -13,6 +13,7 @@ const signupCloseModal = document.getElementById("signup-close-modal");
 const signupBtn = document.getElementById("signup-btn");
 const signupFullName = document.getElementById("signup-name-input");
 const signupEmail = document.getElementById("signup-email-input");
+const signupPassword = document.getElementById("signup-password-input");
 const signupAge = document.getElementById("signup-age-input");
 const signupGender = document.getElementsByName("gender");
 const signupIntrested = document.getElementsByName("intrested-gender")
@@ -51,7 +52,13 @@ const closeSignupModal = () => {
 }
 
 const signupUser = () => {
-
+    if (checkeSelected(signupGender) && checkeSelected(signupIntrested)) {
+        const name = signupFullName.value;
+        const email = signupEmail.value;
+        const password = signupPassword.value;
+        const age = signupAge.value;
+        // const gender = getGender();
+    }
 }
 
 // Event listeners
@@ -63,7 +70,18 @@ signupCloseModal.addEventListener("click", closeSignupModal);
 signupBtn.addEventListener("click", signupUser);
 
 // Helper functions
+const checkeSelected = (array) => {
+    let selected = false;
+    for (const item of array) {
+        if (item.checked)
+            selected = true;
+    }
+    return selected;
+}
 
+const getGender = () => {
+
+}
 
 const validateEmail = (email) => {
     return email.match(/(.+)@(.+){2,}\.(.+){2,}/);
