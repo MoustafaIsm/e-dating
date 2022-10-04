@@ -16,7 +16,8 @@ const signupEmail = document.getElementById("signup-email-input");
 const signupPassword = document.getElementById("signup-password-input");
 const signupAge = document.getElementById("signup-age-input");
 const signupGender = document.getElementsByName("gender");
-const signupIntrested = document.getElementsByName("intrested-gender")
+const signupIntrested = document.getElementsByName("intrested-gender");
+const signupError = document.getElementById("signup-error");
 
 // Modal related stuff
 if (typeof signupModal.showModal !== 'function') {
@@ -24,6 +25,7 @@ if (typeof signupModal.showModal !== 'function') {
 }
 // Listeners functions
 const loginUser = () => {
+    loginError.innerText = "";
     if (loginEmail.value != "" && loginPassword.value != "") {
 
         const formData = new FormData();
@@ -32,8 +34,7 @@ const loginUser = () => {
 
         axios.post(`${url}/auth/login`, formData)
             .then((response) => {
-                // saveUserData(response.data);
-                window.location.href = "../main.html";
+                login(response.data);
             })
             .catch((error) => loginError.textContent = "Invalid email or password.");
     } else {
@@ -51,15 +52,36 @@ const closeSignupModal = () => {
     signupModal.classList.add("hide");
 }
 
-const signupUser = () => {
-    if (checkeSelected(signupGender) && checkeSelected(signupIntrested)) {
-        const name = signupFullName.value;
-        const email = signupEmail.value;
-        const password = signupPassword.value;
-        const age = signupAge.value;
-        const gender = getGender();
-        const intrested = getIntrested();
-        const location = getLocation();
+const signupUser = async () => {
+    signupError.innerText = "";
+    if (checkeSelected(signupGender) && checkeSelected(signupIntrested)
+        && validateEmail(signupEmail.value) && validatePassword(signupPassword.value)) {
+        const formData = new FormData();
+        formData.append("name", signupFullName.value);
+        formData.append("email", signupEmail.value);
+        formData.append("password", signupPassword.value);
+        formData.append("age", signupAge.value);
+        formData.append("gender", getGender());
+        formData.append("intrested_in", getIntrested());
+        window.navigator.geolocation.getCurrentPosition((response) => {
+            const long = response.coords.longitude;
+            const lat = response.coords.latitude;
+            const key = "d06600033d4a46e99b31c71538561636 ";
+            const url1 = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=${key}`;
+            axios.get(url1).then((response) => {
+                formData.append("location", response.data.results[0].formatted);
+                axios.post(`${url}/auth/register`, formData)
+                    .then((response1) => {
+                        login(response1.data);
+                    })
+                    .catch((error) => {
+                        signupError.innerText = "Please choose another email.";
+                    });
+            }).catch((error) => console.log(error));
+        }, console.log);
+    } else {
+        signupError.style.color = "red";
+        signupError.innerText = "Please enter a valid email, and a valid password.";
     }
 }
 
@@ -98,10 +120,18 @@ const getIntrested = () => {
     return selected;
 }
 
+const getLocation = () => {
+    if (window.navigator.geolocation) {
+        return
+    }
+}
+
 const validateEmail = (email) => {
-    return email.match(/(.+)@(.+){2,}\.(.+){2,}/);
+    const pattern = /(.+)@(.+){2,}\.(.+){2,}/;
+    return email.match(pattern);
 }
 
 const validatePassword = (password) => {
-    return password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/);
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    return password.match(pattern);
 }
