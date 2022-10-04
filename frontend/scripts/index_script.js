@@ -10,21 +10,28 @@ const signupText = document.getElementById("signup-text");
 const signupModal = document.getElementById("signup-modal");
 const signupCloseModal = document.getElementById("signup-close-modal");
 
+const signupBtn = document.getElementById("signup-btn");
+const signupFullName = document.getElementById("signup-name-input");
+const signupEmail = document.getElementById("signup-email-input");
+const signupAge = document.getElementById("signup-age-input");
+const signupGender = document.getElementsByName("gender");
+const signupIntrested = document.getElementsByName("intrested-gender")
+
 // Modal related stuff
 if (typeof signupModal.showModal !== 'function') {
     signupModal.hidden = true;
 }
 // Listeners functions
 const loginUser = () => {
-
     if (loginEmail.value != "" && loginPassword.value != "") {
+
         const formData = new FormData();
         formData.append("email", loginEmail.value);
         formData.append("password", loginPassword);
 
         axios.post(`${url}/auth/login`, formData)
             .then((response) => {
-                saveUserData(response.data);
+                // saveUserData(response.data);
                 window.location.href = "../main.html";
             })
             .catch((error) => loginError.textContent = "Invalid email or password.");
@@ -43,7 +50,9 @@ const closeSignupModal = () => {
     signupModal.classList.add("hide");
 }
 
+const signupUser = () => {
 
+}
 
 // Event listeners
 loginBtn.addEventListener("click", loginUser);
@@ -51,6 +60,7 @@ loginBtn.addEventListener("click", loginUser);
 signupText.addEventListener("click", openSignupModal);
 signupCloseModal.addEventListener("click", closeSignupModal);
 
+signupBtn.addEventListener("click", signupUser);
 
 // Helper functions
 
