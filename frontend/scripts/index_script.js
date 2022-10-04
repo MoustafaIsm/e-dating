@@ -1,4 +1,11 @@
+const url = "http://127.0.0.1:8000/api";
+
 // Variables
+const loginBtn = document.getElementById("login-btn");
+const loginEmail = document.getElementById("login-email-input");
+const loginPassword = document.getElementById("login-password-input");
+const loginError = document.getElementById("login-error");
+
 const signupText = document.getElementById("signup-text");
 const signupModal = document.getElementById("signup-modal");
 const signupCloseModal = document.getElementById("signup-close-modal");
@@ -8,6 +15,24 @@ if (typeof signupModal.showModal !== 'function') {
     signupModal.hidden = true;
 }
 // Listeners functions
+const loginUser = () => {
+
+    if (loginEmail.value != "" && loginPassword.value != "") {
+        const formData = new FormData();
+        formData.append("email", loginEmail.value);
+        formData.append("password", loginPassword);
+
+        axios.post(`${url}/auth/login`, formData)
+            .then((response) => {
+                saveUserData(response.data);
+                window.location.href = "../main.html";
+            })
+            .catch((error) => loginError.textContent = "Invalid email or password.");
+    } else {
+        loginError.textContent = "Error";
+    }
+}
+
 const openSignupModal = () => {
     signupModal.showModal();
     signupModal.classList.remove("hide");
@@ -21,6 +46,8 @@ const closeSignupModal = () => {
 
 
 // Event listeners
+loginBtn.addEventListener("click", loginUser);
+
 signupText.addEventListener("click", openSignupModal);
 signupCloseModal.addEventListener("click", closeSignupModal);
 

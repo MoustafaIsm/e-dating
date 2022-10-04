@@ -23,19 +23,19 @@
                 <h3> Your interests are your Spotlight </h3>
             </div>
             <!-- Form -->
-            <form class="index-login-form">
+            <form class="index-login-form" id="login-form">
                 <!-- Email input -->
                 <div class="input-wrapper">
                     <label for="login-email-input"> Email </label>
-                    <input type="email" placeholder="Email" id="login-email-input" required>
+                    <input type="email" placeholder="Email" id="login-email-input">
                 </div>
                 <!-- Password input -->
                 <div class="input-wrapper">
                     <label for="login-password-input"> Password </label>
-                    <input type="password" placeholder="Password" id="login-password-input" required>
+                    <input type="password" placeholder="Password" id="login-password-input">
                 </div>
-                <p class="login-error"></p>
-                <button class="btn outlined-btn bold-text"> Log in </button>
+                <p class="login-error" id="login-error"></p>
+                <button class="btn outlined-btn bold-text" id="login-btn" type="button"> Log in </button>
             </form>
             <!-- Signup -->
             <div class="signup-text">
@@ -106,7 +106,6 @@
     </div>
 
     <script src="./scripts/axios/node_modules/axios/dist/axios.min.js"></script>
-    <script src="./scripts/api_requests.js"></script>
     <script src="./scripts/index_script.js"></script>
 </body>
 
