@@ -9,6 +9,7 @@ const openMsgsPage = () => {
 
 const openProfilePage = () => {
     openPage("profile");
+    fillUserInfo();
 }
 
 const openMenu = () => {

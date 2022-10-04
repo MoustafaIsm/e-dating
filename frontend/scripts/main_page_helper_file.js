@@ -34,3 +34,8 @@ const openPage = (page) => {
         profileBurgerNavBtn.classList.add("active-burger-nav-btn");
     }
 }
+
+const fillUserInfo = () => {
+    if (localStorage.getItem("profile_picture") != "NA")
+        userProfilePicture.innerHTML = `<img src="${localStorage.getItem("profile_picture")}" alt="Profile Picture">`;
+}
