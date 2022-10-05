@@ -470,7 +470,7 @@ img {
     flex-direction: column;
 }
 
-.user-info > * {
+.user-info * {
     margin: 5px 0px;
 }
 

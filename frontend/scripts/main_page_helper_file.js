@@ -37,5 +37,12 @@ const openPage = (page) => {
 
 const fillUserInfo = () => {
     if (localStorage.getItem("profile_picture") != "NA")
-        userProfilePicture.innerHTML = `<img src="${localStorage.getItem("profile_picture")}" alt="Profile Picture">`;
+        userProfilePicture.innerHTML = `<img src="${localStorage.getItem("profile_picture_url")}" alt="Profile Picture">`;
+    userInfo.innerHTML = `
+        <P class="meduim-text bold-text"> ${localStorage.getItem("name")} </P>
+        <p> ${localStorage.getItem("email")} </p>
+        <p> ${localStorage.getItem("gender")} </p>
+        <p> ${localStorage.getItem("location")} </p>
+        <p> ${localStorage.getItem("bio")} </p>
+    `;
 }
