@@ -52,12 +52,53 @@ const fillUserInfo = () => {
 
 const fillFavorites = () => {
     axios.get(`${url}/favorites/get_favorites`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
+        headers: { 'Authorization': `Bearer ${token}` }
     }).then((response) => {
-        console.log(response);
+        populateCards(favoritesWrapper, response.data.result);
     }).catch((error) => {
         console.log(error);
+        // window.location.href = "../frontend/index.html";
     });
+}
+
+const populateCards = (container, array) => {
+    container.innerHTML = ``;
+    if (array.length == 0) {
+        container.innerHTML = `<p> You have no favorited users </p>`;
+    }
+    for (const item of array) {
+        let ppHolder = "";
+        if (item.favorited_info.profile_picture_url != "NA")
+            ppHolder = `<img src="${item.favorited_info.profile_picture_url}" alt="Profile picture">`;
+        container.innerHTML += `
+            <!-- Card -->
+            <div class="card">
+                <!-- Profile information -->
+                <div class="info-wrapper">
+                    <!-- Image -->
+                    <div class="img-wrapper"> ${ppHolder} </div>
+                    <!-- Details -->
+                    <div class="details-wrapper">
+                        <p class="bold-text meduim-text"> ${item.favorited_info.full_name} </p>
+                        <p class="regular-text"> ${item.favorited_info.age} </p>
+                        <p class="regular-text"> ${item.favorited_info.gender} </p>
+                    </div>
+                </div>
+                <!-- Bio -->
+                <div class="bio-wrapper">
+                    <p class="bold-text meduim-text"> Bio: </p>
+                    <p> ${item.favorited_info.bio} </p>
+                </div>
+                <!-- Buttons -->
+                <div class="btns-wrapper">
+                    <span class="material-symbols-outlined">
+                        favorite
+                    </span>
+                    <span class="material-symbols-outlined">
+                        send
+                    </span>
+                </div>
+            </div>
+        `;
+    }
 }

@@ -20,6 +20,8 @@ const closeEditProfileBtn = document.getElementById("close-edit-profile-btn");
 const userProfilePicture = document.getElementById("user-profile-picture");
 const userInfo = document.getElementById("user-info");
 
+const favoritesWrapper = document.getElementById("favorites-wrapper");
+
 
 // Modal related stuff
 if (typeof editProfilemodal.showModal !== 'function') {
