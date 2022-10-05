@@ -1,6 +1,7 @@
 // Listeners functions
 const openHomePage = () => {
     openPage("home");
+    fillDiscover();
 }
 
 const openMsgsPage = () => {

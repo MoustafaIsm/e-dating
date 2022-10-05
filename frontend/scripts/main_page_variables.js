@@ -22,6 +22,9 @@ const userInfo = document.getElementById("user-info");
 
 const favoritesWrapper = document.getElementById("favorites-wrapper");
 
+// Discover
+const discoverWrapper = document.getElementById("discover-wrapper");
+
 
 // Modal related stuff
 if (typeof editProfilemodal.showModal !== 'function') {

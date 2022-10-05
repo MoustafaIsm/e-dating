@@ -38,6 +38,17 @@ const openPage = (page) => {
     }
 }
 
+const fillDiscover = () => {
+    axios.get(`${url}/intrested`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+    }).then((response) => {
+        populateDiscover(discoverWrapper, response.data.result);
+    }).catch((error) => {
+        console.log(error);
+        window.location.href = "../frontend/index.html";
+    });
+}
+
 const fillUserInfo = () => {
     if (localStorage.getItem("profile_picture") != "NA")
         userProfilePicture.innerHTML = `<img src="${localStorage.getItem("profile_picture_url")}" alt="Profile Picture">`;
@@ -54,14 +65,14 @@ const fillFavorites = () => {
     axios.get(`${url}/favorites/get_favorites`, {
         headers: { 'Authorization': `Bearer ${token}` }
     }).then((response) => {
-        populateCards(favoritesWrapper, response.data.result);
+        populateFavorites(favoritesWrapper, response.data.result);
     }).catch((error) => {
         console.log(error);
-        // window.location.href = "../frontend/index.html";
+        window.location.href = "../frontend/index.html";
     });
 }
 
-const populateCards = (container, array) => {
+const populateFavorites = (container, array) => {
     container.innerHTML = ``;
     if (array.length == 0) {
         container.innerHTML = `<p> You have no favorited users </p>`;
@@ -100,5 +111,46 @@ const populateCards = (container, array) => {
                 </div>
             </div>
         `;
+    }
+}
+
+const populateDiscover = (container, array) => {
+    container.innerHTML = ``;
+    if (array.length == 0)
+        container.innerHTML = `<p> You have no Intrested users </p>`;
+    for (const item of array) {
+        let ppHolder = "";
+        if (item.profile_picture_url != "NA")
+            ppHolder = `<img src="${item.profile_picture_url}" alt="Profile picture">`;
+        container.innerHTML += `
+            <!-- Card -->
+            <div class="card">
+                <!-- Profile information -->
+                <div class="info-wrapper">
+                    <!-- Image -->
+                    <div class="img-wrapper"> ${ppHolder} </div>
+                    <!-- Details -->
+                    <div class="details-wrapper">
+                        <p class="bold-text meduim-text"> ${item.full_name} </p>
+                        <p class="regular-text"> ${item.age} </p>
+                        <p class="regular-text"> ${item.gender} </p>
+                    </div>
+                </div>
+                <!-- Bio -->
+                <div class="bio-wrapper">
+                    <p class="bold-text meduim-text"> Bio: </p>
+                    <p> ${item.bio} </p>
+                </div>
+                <!-- Buttons -->
+                <div class="btns-wrapper">
+                    <span class="material-symbols-outlined">
+                        favorite
+                    </span>
+                    <span class="material-symbols-outlined">
+                        send
+                    </span>
+                </div>
+            </div>
+            `;
     }
 }
