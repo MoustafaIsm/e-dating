@@ -146,9 +146,12 @@ const login = (data) => {
 const saveDataTolocalStorage = (data) => {
     localStorage.setItem("token", data.authorisation.token);
     localStorage.setItem("id", data.user.id);
-    localStorage.setItem("Name", data.user.full_name);
+    localStorage.setItem("name", data.user.full_name);
+    localStorage.setItem("email", data.user.email);
     localStorage.setItem("age", data.user.age);
     localStorage.setItem("location", data.user.location);
     localStorage.setItem("gender", data.user.gender);
     localStorage.setItem("intrestedIn", data.user.intrested_in);
+    localStorage.setItem("bio", data.user.bio);
+    localStorage.setItem("profile_picture_url", data.user.profile_picture_url);
 }

@@ -1,6 +1,11 @@
+window.onload = () => {
+    fillDiscover();
+}
+
 // Listeners functions
 const openHomePage = () => {
     openPage("home");
+    fillDiscover();
 }
 
 const openMsgsPage = () => {
@@ -10,6 +15,7 @@ const openMsgsPage = () => {
 const openProfilePage = () => {
     openPage("profile");
     fillUserInfo();
+    fillFavorites();
 }
 
 const openMenu = () => {

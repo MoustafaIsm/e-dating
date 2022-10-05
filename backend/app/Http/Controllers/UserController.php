@@ -13,7 +13,8 @@ class UserController extends Controller {
 
     function getIntrestedIn() {
         $user = Auth::user();
-        $usersToDsiplay = User::where('gender', 'like', '%' . $user->intrested_in . '%')
+        $intrestedIn = str_replace(",", "", $user->intrested_in);
+        $usersToDsiplay = User::where('gender', 'like', '%' . $intrestedIn . '%')
                                 ->where('id', '!=', $user->id)
                                 ->get();
         return response()->json([
