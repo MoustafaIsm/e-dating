@@ -1,3 +1,7 @@
+window.onload = () => {
+    fillDiscover();
+}
+
 // Listeners functions
 const openHomePage = () => {
     openPage("home");
