@@ -1,3 +1,6 @@
+const url = "http://127.0.0.1:8000/api/user";
+const token = localStorage.getItem("token");
+
 // Helper functions
 const openPage = (page) => {
     if (page == "home") {
@@ -45,4 +48,16 @@ const fillUserInfo = () => {
         <p> ${localStorage.getItem("location")} </p>
         <p> ${localStorage.getItem("bio")} </p>
     `;
+}
+
+const fillFavorites = () => {
+    axios.get(`${url}/favorites/get_favorites`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }).then((response) => {
+        console.log(response);
+    }).catch((error) => {
+        console.log(error);
+    });
 }

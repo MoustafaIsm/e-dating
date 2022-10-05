@@ -10,6 +10,7 @@ const openMsgsPage = () => {
 const openProfilePage = () => {
     openPage("profile");
     fillUserInfo();
+    fillFavorites();
 }
 
 const openMenu = () => {
